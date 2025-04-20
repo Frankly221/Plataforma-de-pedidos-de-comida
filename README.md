@@ -45,3 +45,21 @@ Documentación : API	Swagger / OpenAPI
 #----------------------------------------------------------------------------------------
 🧩 Estado del proyecto
 🔨 En desarrollo. Actualmente construyendo el microservicio de Productos con estructura modular y arquitectura limpia.
+
+
+Modulos---
+Usuarios:	Registro, login, roles: cliente, repartidor, restaurante, admin
+
+Productos:	CRUD de menús/productos por restaurante
+
+Pedidos:	Crear, actualizar estados (pendiente, en camino, entregado), ver historial
+
+Pagos:	Simular o integrar con Stripe, PayPal, MercadoPago
+
+Notificaciones:	Enviar updates de pedido por correo, WebSocket / Kafka
+
+API Gateway	Punto único de entrada a los microservicios
+
+Config Server:	Centralizar configuración externa
+
+Discovery Server: (Eureka)
