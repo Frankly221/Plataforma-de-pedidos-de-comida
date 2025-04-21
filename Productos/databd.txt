@@ -1,0 +1,25 @@
+CREATE TABLE producto (
+    id_producto INT AUTO_INCREMENT PRIMARY KEY,
+    descripcion VARCHAR(255),
+    precio DECIMAL(10, 2),
+    disponible BOOLEAN,
+    id_restaurante INT,
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+INSERT INTO producto (descripcion, precio, disponible, id_restaurante) 
+VALUES 
+('Hamburguesa Clásica', 8.50, TRUE, 1),
+('Pizza Margarita', 12.00, TRUE, 2),
+('Sushi Roll', 15.75, TRUE, 3),
+('Ensalada César', 6.25, TRUE, 1),
+('Tacos al Pastor', 7.00, TRUE, 2),
+('Pasta Bolognesa', 10.50, FALSE, 3),
+('Pollo Asado', 9.00, TRUE, 1),
+('Tarta de Frutas', 5.00, TRUE, 2),
+('Ceviche de Camarón', 13.00, TRUE, 3),
+('Croquetas de Pollo', 4.50, TRUE, 1);
+
+select * from producto
