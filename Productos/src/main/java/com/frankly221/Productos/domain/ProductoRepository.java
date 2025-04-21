@@ -15,7 +15,7 @@ public interface ProductoRepository {
     Producto update(Producto producto); // Método para guardar los cambios
 
     // Un cliente puede ver los productos de un restaurante específico.
-    List<Producto> findByIdrestaurante(int restauranteId);
+    List<Producto> findByIdrestaurante(int idRestaurante);
 
     // El restaurante puede borrar un producto que ya no ofrece.
     void deleteByIdProductoAndIdrestaurante(int idProducto, int idRestaurante);
