@@ -2,8 +2,9 @@ package com.frankly221.Productos.application;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
-
+import org.modelmapper.TypeMap;
 import com.frankly221.Productos.domain.Producto;
+import org.modelmapper.config.Configuration.AccessLevel;
 
 @Component
 public class ProductoMapper {
@@ -13,6 +14,13 @@ public class ProductoMapper {
     
     public ProductoMapper(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
+         // Configurar para ignorar campos null al mapear
+         this.modelMapper.getConfiguration()
+         .setFieldMatchingEnabled(true)
+         .setFieldAccessLevel(AccessLevel.PRIVATE)
+         .setSkipNullEnabled(true);
+
+        
     }
 
     public ProductoDTO productoToProductoDTO(Producto producto){
@@ -27,6 +35,10 @@ public class ProductoMapper {
         Producto producto = modelMapper.map(productoDTO, Producto.class);
 
         return producto;
+    }
+
+    public void actualizarProductoDesdeDTO(ProductoDTO productoDTO, Producto productoExistente) {
+        modelMapper.map(productoDTO, productoExistente);
     }
 
 
