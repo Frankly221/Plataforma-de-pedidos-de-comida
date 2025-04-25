@@ -1,7 +1,6 @@
 package com.frankly221.Productos.infrastructure;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -63,10 +62,10 @@ public class ProductoController {
     @DeleteMapping("/{idRestaurante}/{idProducto}")
     public ResponseEntity<Void> deleteProducto(
             @PathVariable int idRestaurante,
-            @PathVariable int idProducto) {
+            @PathVariable int idProducto) throws  ProductoNotFoundException {
 
-        boolean deleted = productoService.deleteByIdProductoAndIdrestaurante(idProducto, idRestaurante);
+         productoService.deleteByIdProductoAndIdrestaurante(idProducto, idRestaurante);
 
-        return deleted ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        return ResponseEntity.noContent().build();
     }
 }

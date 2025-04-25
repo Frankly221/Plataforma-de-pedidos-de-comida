@@ -2,7 +2,7 @@ package com.frankly221.Productos.application;
 
 import java.time.Instant;
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.stereotype.Service;
 
@@ -84,15 +84,11 @@ public class ProductoService {
 //-------------------------------------------------------------------------------------------------------------
     // Se busca el producto por idProducto y idRestaurante y se elimina el producto
 
-    public boolean deleteByIdProductoAndIdrestaurante(int idProducto, int idRestaurante) {
-        Optional<Producto> producto = productoRepository.findByIdProductoAndIdrestaurante(idProducto, idRestaurante);
+    public void deleteByIdProductoAndIdrestaurante(int idProducto, int idRestaurante) throws ProductoNotFoundException {
+        productoRepository.findByIdProductoAndIdrestaurante(idProducto, idRestaurante)
+            .orElseThrow(() -> new ProductoNotFoundException("Producto no encontrado para eliminar"));
     
-        if (producto.isPresent()) {
-            productoRepository.deleteByIdProductoAndIdrestaurante(idProducto, idRestaurante);
-            return true;
-        }
-    
-        return false; // o lanza una excepción personalizada si prefieres
+        productoRepository.deleteByIdProductoAndIdrestaurante(idProducto, idRestaurante);
     }
 
 }
