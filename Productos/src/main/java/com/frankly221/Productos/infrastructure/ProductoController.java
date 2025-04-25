@@ -42,10 +42,9 @@ public class ProductoController {
             @PathVariable int idRestaurante,
             @PathVariable int idProducto) throws ProductoNotFoundException {
 
-        Optional<ProductoDTO> productoDTO = productoService.findByIdProductoAndIdrestaurante(idProducto, idRestaurante);
 
-        return productoDTO.map(dto -> new ResponseEntity<>(dto, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+                ProductoDTO dto = productoService.findByIdProductoAndIdrestaurante(idProducto, idRestaurante);
+                return ResponseEntity.ok(dto);
     }
 
     @PostMapping

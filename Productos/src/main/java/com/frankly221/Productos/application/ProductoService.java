@@ -4,7 +4,6 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import com.frankly221.Productos.application.error.ProductoNotFoundException;
@@ -58,17 +57,13 @@ public class ProductoService {
 //-------------------------------------------------------------------------------------------------------------
     // Se busca el producto por idProducto y idRestaurante y se devuelve el productoDTO
 
-    public Optional<ProductoDTO> findByIdProductoAndIdrestaurante(int idProducto, int idRestaurante) throws ProductoNotFoundException {
+    public ProductoDTO findByIdProductoAndIdrestaurante(int idProducto, int idRestaurante) throws ProductoNotFoundException {
 
 
-        Optional<Producto> producto = productoRepository.findByIdProductoAndIdrestaurante(idProducto, idRestaurante);
-        if(!producto.isPresent()){
-            throw new ProductoNotFoundException("El producto no existe en el restaurante");
-            }
+        Producto producto = productoRepository.findByIdProductoAndIdrestaurante(idProducto, idRestaurante)
+        .orElseThrow(() -> new ProductoNotFoundException("El producto no existe en el restaurante"));
 
-        Optional<ProductoDTO> productoDTO = producto.map(productoMapper::productoToProductoDTO);
-
-        return productoDTO;
+    return productoMapper.productoToProductoDTO(producto);
     }
 //-------------------------------------------------------------------------------------------------------------
     // Se busca el producto por idProducto y idRestaurante y se devuelve el productoDTO
