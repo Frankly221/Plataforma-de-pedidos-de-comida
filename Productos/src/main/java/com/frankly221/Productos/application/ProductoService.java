@@ -68,23 +68,18 @@ public class ProductoService {
 //-------------------------------------------------------------------------------------------------------------
     // Se busca el producto por idProducto y idRestaurante y se devuelve el productoDTO
 
-    public Optional<ProductoDTO> update(ProductoDTO productoDTO) {
-        Optional<Producto> productoExistente = productoRepository
-            .findByIdProductoAndIdrestaurante(productoDTO.getIdProducto(), productoDTO.getIdRestaurante());
+    public ProductoDTO update(ProductoDTO productoDTO) throws ProductoNotFoundException {
+        Producto productoExistente = productoRepository
+            .findByIdProductoAndIdrestaurante(productoDTO.getIdProducto(), productoDTO.getIdRestaurante())
+            .orElseThrow(() -> new ProductoNotFoundException("Producto no encontrado para actualizar"));
     
-        if (productoExistente.isPresent()) {
-            Producto producto = productoExistente.get();
+        // Mapeo de los nuevos valores sobre el objeto existente
+        productoMapper.actualizarProductoDesdeDTO(productoDTO, productoExistente);
+        productoExistente.setActualizadoEn(Instant.now());
     
-            // Mapeo de los nuevos valores sobre el objeto existente
-            productoMapper.actualizarProductoDesdeDTO(productoDTO, producto);
+        Producto productoActualizado = productoRepository.update(productoExistente);
     
-            producto.setActualizadoEn(Instant.now());
-    
-            Producto productoActualizado = productoRepository.update(producto);
-            return Optional.of(productoMapper.productoToProductoDTO(productoActualizado));
-        }
-    
-        return Optional.empty();
+        return productoMapper.productoToProductoDTO(productoActualizado);
     }
 //-------------------------------------------------------------------------------------------------------------
     // Se busca el producto por idProducto y idRestaurante y se elimina el producto

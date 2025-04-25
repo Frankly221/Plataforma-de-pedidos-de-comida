@@ -54,11 +54,10 @@ public class ProductoController {
     }
 
     @PutMapping
-    public ResponseEntity<ProductoDTO> updateProducto(@RequestBody ProductoDTO productoDTO) {
-        Optional<ProductoDTO> updatedProducto = productoService.update(productoDTO);
+    public ResponseEntity<ProductoDTO> updateProducto(@RequestBody ProductoDTO productoDTO) throws  ProductoNotFoundException {
+       ProductoDTO updatedProducto = productoService.update(productoDTO);
 
-        return updatedProducto.map(dto -> new ResponseEntity<>(dto, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+       return ResponseEntity.ok(updatedProducto);
     }
 
     @DeleteMapping("/{idRestaurante}/{idProducto}")
