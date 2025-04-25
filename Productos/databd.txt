@@ -5,21 +5,99 @@ CREATE TABLE producto (
     disponible BOOLEAN,
     id_restaurante INT,
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    id_producto INT
 );
 
 
-INSERT INTO producto (descripcion, precio, disponible, id_restaurante) 
+INSERT INTO producto (descripcion, precio, disponible, id_restaurante,id_producto) 
 VALUES 
-('Hamburguesa Clásica', 8.50, TRUE, 1),
-('Pizza Margarita', 12.00, TRUE, 2),
-('Sushi Roll', 15.75, TRUE, 3),
-('Ensalada César', 6.25, TRUE, 1),
-('Tacos al Pastor', 7.00, TRUE, 2),
-('Pasta Bolognesa', 10.50, FALSE, 3),
-('Pollo Asado', 9.00, TRUE, 1),
-('Tarta de Frutas', 5.00, TRUE, 2),
-('Ceviche de Camarón', 13.00, TRUE, 3),
-('Croquetas de Pollo', 4.50, TRUE, 1);
+('Hamburguesa Clásica', 8.50, TRUE, 1, 1),
+('Pizza Margarita', 12.00, TRUE, 2, 2),
+('Sushi Roll', 15.75, TRUE, 3, 3),
+('Ensalada César', 6.25, TRUE, 1, 4),
+('Tacos al Pastor', 7.00, TRUE, 2, 5),
+('Pasta Bolognesa', 10.50, FALSE, 3, 2),
+('Pollo Asado', 9.00, TRUE, 1, 5),
+('Tarta de Frutas', 5.00, TRUE, 2, 7),
+('Ceviche de Camarón', 13.00, TRUE, 3, 6),
+('Croquetas de Pollo', 4.50, TRUE, 1, 5);
 
-select * from producto
+select * from producto;
+
+CREATE TABLE categoria (
+    id_categoria INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255),
+    descripcion VARCHAR(255),
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE producto_ingrediente (
+    id_producto_ingrediente INT AUTO_INCREMENT PRIMARY KEY,
+	id_producto INT,
+    id_ingrediente INT
+);
+
+
+INSERT INTO categoria (nombre, descripcion) VALUES
+('Comida Rápida', 'Platos preparados de forma rápida, ideales para llevar'),
+('Italiana', 'Comidas típicas de la gastronomía italiana'),
+('Japonesa', 'Platos típicos de la cocina japonesa'),
+('Ensaladas', 'Platos fríos con vegetales, saludables y ligeros'),
+('Carnes', 'Platos basados en carne como ingrediente principal'),
+('Mariscos', 'Platos que tienen como base pescados o mariscos'),
+('Postres', 'Dulces o platos para cerrar una comida');
+
+select * from categoria;
+
+CREATE TABLE producto_ingrediente (
+    id_producto_ingrediente INT AUTO_INCREMENT PRIMARY KEY,
+	id_producto INT,
+    id_ingrediente INT
+);
+
+CREATE TABLE ingrediente (
+    idingrediente INT AUTO_INCREMENT PRIMARY KEY,
+	nombre VARCHAR(255),
+    descripcion VARCHAR(255),
+	creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO ingrediente (nombre, descripcion) VALUES
+-- Comida Rápida
+('Pan de Hamburguesa', 'Pan suave con sésamo para hamburguesas'),
+('Carne de Res', 'Carne molida para hamburguesa'),
+('Tortilla de Maíz', 'Tortilla tradicional usada en tacos'),
+('Pollo Desmenuzado', 'Pollo cocido y desmenuzado'),
+
+-- Italiana
+('Masa de Pizza', 'Masa base para pizza italiana'),
+('Queso Mozzarella', 'Queso fundido típico en pizzas y pastas'),
+('Salsa de Tomate', 'Salsa base para pizzas y pastas'),
+('Carne Molida', 'Usada comúnmente en salsas como la bolognesa'),
+
+-- Japonesa
+('Arroz para Sushi', 'Arroz especial para sushi, aderezado con vinagre'),
+('Alga Nori', 'Alga seca utilizada para envolver sushi'),
+('Camarón', 'Marisco común en sushi y ceviche'),
+
+-- Ensaladas
+('Lechuga Romana', 'Base fresca para ensaladas'),
+('Crutones', 'Pan tostado en cubos'),
+('Queso Parmesano', 'Queso rallado para ensaladas y pastas'),
+
+-- Carnes
+('Muslo de Pollo', 'Parte del pollo ideal para asar'),
+('Ajo', 'Usado como condimento en carnes'),
+
+-- Mariscos
+('Limón', 'Usado en ceviche para marinar'),
+('Cilantro', 'Hierba fresca muy usada en ceviches'),
+
+-- Postres
+('Frutas Mixtas', 'Mezcla de frutas frescas'),
+('Masa de Tarta', 'Base para tartas dulces');
+
+select * from ingrediente;

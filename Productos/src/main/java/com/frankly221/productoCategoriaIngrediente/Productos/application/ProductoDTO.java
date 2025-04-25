@@ -1,4 +1,4 @@
-package com.frankly221.Productos.application;
+package com.frankly221.productoCategoriaIngrediente.Productos.application;
 
 import java.time.Instant;
 
@@ -22,5 +22,6 @@ public class ProductoDTO {
     private int idRestaurante; // Relación con el restaurante (simplificada)
     private Instant creadoEn;
     private Instant actualizadoEn;
+    private int idCategoria; 
     
 }

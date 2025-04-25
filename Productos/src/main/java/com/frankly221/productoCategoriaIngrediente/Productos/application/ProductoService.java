@@ -1,4 +1,4 @@
-package com.frankly221.Productos.application;
+package com.frankly221.productoCategoriaIngrediente.Productos.application;
 
 import java.time.Instant;
 import java.util.List;
@@ -6,9 +6,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.frankly221.Productos.application.error.ProductoNotFoundException;
-import com.frankly221.Productos.domain.Producto;
-import com.frankly221.Productos.domain.ProductoRepository;
+import com.frankly221.productoCategoriaIngrediente.Productos.application.error.ProductoNotFoundException;
+import com.frankly221.productoCategoriaIngrediente.Productos.domain.Producto;
+import com.frankly221.productoCategoriaIngrediente.Productos.domain.ProductoRepository;
 
 @Service
 
@@ -89,6 +89,19 @@ public class ProductoService {
             .orElseThrow(() -> new ProductoNotFoundException("Producto no encontrado para eliminar"));
     
         productoRepository.deleteByIdProductoAndIdrestaurante(idProducto, idRestaurante);
+    }
+
+    //-------------------------------------------------------------------------------------------------------------
+
+    // Se busca el producto por idRestaurante y se devuelve una lista de productosDTO
+
+    public List<ProductoDTO> findByIdCategoria(int idCategoria)  {
+
+        List<ProductoDTO> productosDTO = productoRepository.findByIdCategoria(idCategoria).stream()
+                .map(productoMapper::productoToProductoDTO)
+                .toList();
+        return productosDTO;
+
     }
 
 }

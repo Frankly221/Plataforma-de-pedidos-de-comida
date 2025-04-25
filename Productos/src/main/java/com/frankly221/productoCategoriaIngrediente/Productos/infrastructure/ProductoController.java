@@ -1,4 +1,4 @@
-package com.frankly221.Productos.infrastructure;
+package com.frankly221.productoCategoriaIngrediente.Productos.infrastructure;
 
 import java.util.List;
 
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.frankly221.Productos.application.ProductoDTO;
-import com.frankly221.Productos.application.ProductoService;
-import com.frankly221.Productos.application.error.ProductoNotFoundException;
+import com.frankly221.productoCategoriaIngrediente.Productos.application.ProductoDTO;
+import com.frankly221.productoCategoriaIngrediente.Productos.application.ProductoService;
+import com.frankly221.productoCategoriaIngrediente.Productos.application.error.ProductoNotFoundException;
 
 @RestController
 @RequestMapping("/v1/productos")
@@ -68,4 +68,13 @@ public class ProductoController {
 
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/categoria/{idCategoria}")
+    public ResponseEntity<List<ProductoDTO>> getProductosByIdCategoria(@PathVariable int idCategoria) {
+
+        List<ProductoDTO> productosDTO = productoService.findByIdCategoria(idCategoria);
+
+        return ResponseEntity.ok(productosDTO);
+    }
+
 }

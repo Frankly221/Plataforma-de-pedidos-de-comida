@@ -1,8 +1,10 @@
-package com.frankly221.Productos.application;
+package com.frankly221.productoCategoriaIngrediente.Productos.application;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
-import com.frankly221.Productos.domain.Producto;
+
+import com.frankly221.productoCategoriaIngrediente.Productos.domain.Producto;
+
 import org.modelmapper.config.Configuration.AccessLevel;
 
 @Component

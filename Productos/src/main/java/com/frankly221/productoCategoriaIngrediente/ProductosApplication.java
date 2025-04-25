@@ -1,4 +1,4 @@
-package com.frankly221.Productos;
+package com.frankly221.productoCategoriaIngrediente;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

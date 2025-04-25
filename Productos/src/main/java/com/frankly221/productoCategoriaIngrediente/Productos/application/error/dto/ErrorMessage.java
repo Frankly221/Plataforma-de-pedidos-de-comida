@@ -1,4 +1,4 @@
-package com.frankly221.Productos.application.error.dto;
+package com.frankly221.productoCategoriaIngrediente.Productos.application.error.dto;
 
 import org.springframework.http.HttpStatus;
 

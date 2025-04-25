@@ -2,10 +2,28 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ProductosApplication",
+            "request": "launch",
+            "mainClass": "com.frankly221.productoCategoria.ProductosApplication",
+            "projectName": "Productos"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-ProductosApplication<Productos>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "mainClass": "com.frankly221.Productos.ProductosApplication",
+            "projectName": "Productos",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=60387 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=Productos"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ProductosApplication<Productos>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.frankly221.productoCategoriaIngrediente.ProductosApplication",
             "projectName": "Productos",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
