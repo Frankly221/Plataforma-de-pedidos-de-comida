@@ -2,7 +2,6 @@ package com.frankly221.Productos.application;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
-import org.modelmapper.TypeMap;
 import com.frankly221.Productos.domain.Producto;
 import org.modelmapper.config.Configuration.AccessLevel;
 

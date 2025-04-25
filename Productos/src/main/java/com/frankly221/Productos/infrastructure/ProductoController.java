@@ -16,13 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.frankly221.Productos.application.ProductoDTO;
 import com.frankly221.Productos.application.ProductoService;
+import com.frankly221.Productos.application.error.ProductoNotFoundException;
 
 @RestController
 @RequestMapping("/v1/productos")
 public class ProductoController {
 
-    //Inyeccion de dependencia de ProductoService(Application)
+    // Inyeccion de dependencia de ProductoService(Application)
     private final ProductoService productoService;
+
     public ProductoController(ProductoService productoService) {
         this.productoService = productoService;
     }
@@ -31,43 +33,42 @@ public class ProductoController {
     public ResponseEntity<List<ProductoDTO>> getProductosByIdRestaurante(@PathVariable int idRestaurante) {
 
         List<ProductoDTO> productosDTO = productoService.findByIdrestaurante(idRestaurante);
-        
-        return ResponseEntity.ok(productosDTO); 
+
+        return ResponseEntity.ok(productosDTO);
     }
-    
+
     @GetMapping("/{idRestaurante}/{idProducto}")
     public ResponseEntity<ProductoDTO> getProductoByIdProductoAndIdRestaurante(
-            @PathVariable int idRestaurante, 
-            @PathVariable int idProducto) {
-        
+            @PathVariable int idRestaurante,
+            @PathVariable int idProducto) throws ProductoNotFoundException {
+
         Optional<ProductoDTO> productoDTO = productoService.findByIdProductoAndIdrestaurante(idProducto, idRestaurante);
-        
+
         return productoDTO.map(dto -> new ResponseEntity<>(dto, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    
+
     @PostMapping
     public ResponseEntity<ProductoDTO> createProducto(@RequestBody ProductoDTO productoDTO) {
         ProductoDTO createdProducto = productoService.save(productoDTO);
         return new ResponseEntity<>(createdProducto, HttpStatus.CREATED);
     }
-    
+
     @PutMapping
     public ResponseEntity<ProductoDTO> updateProducto(@RequestBody ProductoDTO productoDTO) {
         Optional<ProductoDTO> updatedProducto = productoService.update(productoDTO);
-        
+
         return updatedProducto.map(dto -> new ResponseEntity<>(dto, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    
+
     @DeleteMapping("/{idRestaurante}/{idProducto}")
     public ResponseEntity<Void> deleteProducto(
-            @PathVariable int idRestaurante, 
+            @PathVariable int idRestaurante,
             @PathVariable int idProducto) {
-        
+
         boolean deleted = productoService.deleteByIdProductoAndIdrestaurante(idProducto, idRestaurante);
-        
-        return deleted ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : 
-                        new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        return deleted ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

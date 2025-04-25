@@ -4,8 +4,10 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
+import com.frankly221.Productos.application.error.ProductoNotFoundException;
 import com.frankly221.Productos.domain.Producto;
 import com.frankly221.Productos.domain.ProductoRepository;
 
@@ -23,14 +25,21 @@ public class ProductoService {
         this.productoMapper = productoMapper;
     }
 
-    public List<ProductoDTO> findByIdrestaurante(int idRestaurante) {
+//-------------------------------------------------------------------------------------------------------------
+
+    // Se busca el producto por idRestaurante y se devuelve una lista de productosDTO
+
+    public List<ProductoDTO> findByIdrestaurante(int idRestaurante)  {
+
         List<ProductoDTO> productosDTO = productoRepository.findByIdrestaurante(idRestaurante).stream()
                 .map(productoMapper::productoToProductoDTO)
                 .toList();
         return productosDTO;
 
     }
+//-------------------------------------------------------------------------------------------------------------
 
+    // Se guarda el producto en la base de datos y se devuelve el productoDTO
     public ProductoDTO save(ProductoDTO productoDTO) {
         Producto producto = productoMapper.productoDTOToProducto(productoDTO);
         
@@ -46,14 +55,23 @@ public class ProductoService {
 
         return productoGuardadoDTO;
     }
+//-------------------------------------------------------------------------------------------------------------
+    // Se busca el producto por idProducto y idRestaurante y se devuelve el productoDTO
 
-    public Optional<ProductoDTO> findByIdProductoAndIdrestaurante(int idProducto, int idRestaurante) {
+    public Optional<ProductoDTO> findByIdProductoAndIdrestaurante(int idProducto, int idRestaurante) throws ProductoNotFoundException {
+
+
         Optional<Producto> producto = productoRepository.findByIdProductoAndIdrestaurante(idProducto, idRestaurante);
+        if(!producto.isPresent()){
+            throw new ProductoNotFoundException("El producto no existe en el restaurante");
+            }
 
         Optional<ProductoDTO> productoDTO = producto.map(productoMapper::productoToProductoDTO);
 
         return productoDTO;
     }
+//-------------------------------------------------------------------------------------------------------------
+    // Se busca el producto por idProducto y idRestaurante y se devuelve el productoDTO
 
     public Optional<ProductoDTO> update(ProductoDTO productoDTO) {
         Optional<Producto> productoExistente = productoRepository
@@ -73,6 +91,8 @@ public class ProductoService {
     
         return Optional.empty();
     }
+//-------------------------------------------------------------------------------------------------------------
+    // Se busca el producto por idProducto y idRestaurante y se elimina el producto
 
     public boolean deleteByIdProductoAndIdrestaurante(int idProducto, int idRestaurante) {
         Optional<Producto> producto = productoRepository.findByIdProductoAndIdrestaurante(idProducto, idRestaurante);
