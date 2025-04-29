@@ -14,4 +14,7 @@ public interface RepositoryCategoria {
 
     // Obtener todas las categorias
     List<Categoria> GetAllCategorias(); 
+
+
+    List<Categoria> GetAllCategoriasTwo(int idProducto);
 }
