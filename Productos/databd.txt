@@ -6,11 +6,11 @@ CREATE TABLE producto (
     id_restaurante INT,
     creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     actualizado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    id_producto INT
+    id_categoria INT
 );
 
 
-INSERT INTO producto (descripcion, precio, disponible, id_restaurante,id_producto) 
+INSERT INTO producto (descripcion, precio, disponible, id_restaurante,id_categoria) 
 VALUES 
 ('Hamburguesa Clásica', 8.50, TRUE, 1, 1),
 ('Pizza Margarita', 12.00, TRUE, 2, 2),
