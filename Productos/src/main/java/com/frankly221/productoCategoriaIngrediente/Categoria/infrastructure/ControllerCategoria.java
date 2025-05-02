@@ -14,7 +14,7 @@ import com.frankly221.productoCategoriaIngrediente.Categoria.application.Categor
 import com.frankly221.productoCategoriaIngrediente.Categoria.application.CategoriaService;
 
 @RestController
-@RequestMapping("/categorias")
+@RequestMapping("/v1/categorias")
 public class ControllerCategoria {
 
     private final CategoriaService categoriaService;
