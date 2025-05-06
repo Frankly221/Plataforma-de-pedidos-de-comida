@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
-import com.frankly221.productoCategoriaIngrediente.Productos.domain.Producto;
+import com.frankly221.productoCategoriaIngrediente.Productos.domain.ProductoIngrediente;
 import com.frankly221.productoCategoriaIngrediente.Productos.domain.ProductoRepository;
 
 @Repository
@@ -19,22 +19,22 @@ public class MysqlProductoRepository implements ProductoRepository {
     }
 
     @Override
-    public Producto save(Producto producto) {
+    public ProductoIngrediente save(ProductoIngrediente producto) {
         return jpaProductoRepository.save(producto);
     }
 
     @Override
-    public Optional<Producto> findByIdProductoAndIdrestaurante(int idProducto, int idRestaurante) {
+    public Optional<ProductoIngrediente> findByIdProductoAndIdrestaurante(int idProducto, int idRestaurante) {
         return  jpaProductoRepository.findByIdProductoAndIdRestaurante(idProducto, idRestaurante);
     }
 
     @Override
-    public Producto update(Producto producto) {
+    public ProductoIngrediente update(ProductoIngrediente producto) {
         return jpaProductoRepository.save(producto);
     }
 
     @Override
-    public List<Producto> findByIdrestaurante(int idRestaurante) {
+    public List<ProductoIngrediente> findByIdrestaurante(int idRestaurante) {
         return jpaProductoRepository.findByIdRestaurante(idRestaurante);
     }
 
@@ -44,7 +44,7 @@ public class MysqlProductoRepository implements ProductoRepository {
     }
 
     @Override
-    public List<Producto> findByIdCategoria(int idCategoria) {
+    public List<ProductoIngrediente> findByIdCategoria(int idCategoria) {
         return jpaProductoRepository.findByIdCategoria(idCategoria);
     }
     

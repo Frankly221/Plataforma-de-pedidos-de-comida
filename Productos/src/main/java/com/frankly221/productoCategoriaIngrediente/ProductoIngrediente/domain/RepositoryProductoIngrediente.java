@@ -1,18 +1,17 @@
-package com.frankly221.productoCategoriaIngrediente.Productos.domain;
+package com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.domain;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface ProductoRepository {
-    // Un restaurante puede crear un producto (nombre, precio, descripción, etc.).
-    // Se asume que el objeto Producto ya tiene el restauranteId asignado.
-    ProductoIngrediente save(ProductoIngrediente producto);
+public interface RepositoryProductoIngrediente {
+
+    ProductoIngrediente save( List<ProductoIngrediente> productoIngrediente );
 
     // El restaurante puede actualizar solo sus propios productos.
     Optional<ProductoIngrediente> findByIdProductoAndIdrestaurante(int idProducto, int idRestaurante);
 
     // El restaurante puede actualizar solo sus propios productos.
-    ProductoIngrediente update(ProductoIngrediente producto); // Método para guardar los cambios
+    ProductoIngrediente update(ProductoIngrediente productoIngrediente); // Método para guardar los cambios
 
     // Un cliente puede ver los productos de un restaurante específico.
     List<ProductoIngrediente> findByIdrestaurante(int idRestaurante);
@@ -22,4 +21,5 @@ public interface ProductoRepository {
 
     // Un cliente puede ver los productos de una categoria en específico.
     List<ProductoIngrediente> findByIdCategoria(int idCategoria);
+    
 }

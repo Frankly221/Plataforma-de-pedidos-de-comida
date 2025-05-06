@@ -1,4 +1,6 @@
-package com.frankly221.productoCategoriaIngrediente.Productos.domain;
+package com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.domain;
+
+
 
 import java.time.Instant;
 
@@ -16,29 +18,27 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
-@Table(name = "producto")
-public class Producto {
+@Table(name = "producto_ingrediente")
+public class ProductoIngrediente {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_producto_ingrediente")
+    private int idProductoIngrediente;
+
     @Column(name = "id_producto")
     private int idProducto;
-    @Column(name = "descripcion")
-    private String descripcion;
-    @Column(name = "precio")
-    private Double precio;
-    @Column(name = "disponible")
-    private Boolean disponible;
-    @Column(name = "id_restaurante")
-    private int idRestaurante; // Relación con el restaurante (simplificada)
+
+    @Column(name = "id_ingrediente")
+    private int idIngrediente;
+
     @Column(name = "creado_en")
     private Instant creadoEn;
+
     @Column(name = "actualizado_en")
     private Instant actualizadoEn;
 
-    @Column(name = "id_categoria")
-    private int idCategoria; 
 
     
 }
