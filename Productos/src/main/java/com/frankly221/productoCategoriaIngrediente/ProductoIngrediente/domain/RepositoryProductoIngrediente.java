@@ -1,25 +1,22 @@
 package com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.domain;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface RepositoryProductoIngrediente {
 
+    //Guardar en la tabla tantos productos como ingredientes se le pasen
     ProductoIngrediente save( List<ProductoIngrediente> productoIngrediente );
 
-    // El restaurante puede actualizar solo sus propios productos.
-    Optional<ProductoIngrediente> findByIdProductoAndIdrestaurante(int idProducto, int idRestaurante);
+    //Busca por un producto y devuelve todos los ingredientes que tiene ese producto
+    List<ProductoIngrediente> buscarIngredientesPorProducto(int idProducto); 
 
-    // El restaurante puede actualizar solo sus propios productos.
-    ProductoIngrediente update(ProductoIngrediente productoIngrediente); // Método para guardar los cambios
 
-    // Un cliente puede ver los productos de un restaurante específico.
-    List<ProductoIngrediente> findByIdrestaurante(int idRestaurante);
+    //Edita la fila de la tabla segun el idProductoIngrediente que se le pase
+    ProductoIngrediente update( List<ProductoIngrediente> productoIngrediente, int idProductoIngrediente); 
 
-    // El restaurante puede borrar un producto que ya no ofrece.
-    void deleteByIdProductoAndIdrestaurante(int idProducto, int idRestaurante);
 
-    // Un cliente puede ver los productos de una categoria en específico.
-    List<ProductoIngrediente> findByIdCategoria(int idCategoria);
+    //Elimina la fila de la tabla segun el idProductoIngrediente que se le pase , solo seria true or false
+    void deleteByIdProductoAndIdrestaurante(ProductoIngrediente productoIngrediente, int idProductoIngrediente);
+
     
 }
