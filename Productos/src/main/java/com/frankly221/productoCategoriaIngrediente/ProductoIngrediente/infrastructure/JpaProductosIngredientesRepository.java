@@ -23,8 +23,8 @@ public interface JpaProductosIngredientesRepository extends  JpaRepository<Produ
            FROM producto p
            JOIN producto_ingrediente pi ON p.id_producto = pi.id_producto
            JOIN ingrediente i          ON pi.id_ingrediente = i.idingrediente
-           WHERE p.id_producto = :productoId
+           WHERE p.id_producto = :idProducto
            ORDER BY i.nombre
            """, nativeQuery = true)
-    List<Object[]> findIngredientesByProductoId(@Param("productoId") int productoId);
+    List<Object[]> findIngredientesByIdProducto(@Param("idProducto") int idProducto);
 }

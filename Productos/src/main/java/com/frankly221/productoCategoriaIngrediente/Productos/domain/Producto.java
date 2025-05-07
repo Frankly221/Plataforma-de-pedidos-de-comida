@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Table(name = "producto")
-public class ProductoIngrediente {
+public class Producto {
 
 
     @Id

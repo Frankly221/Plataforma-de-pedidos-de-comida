@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.frankly221.productoCategoriaIngrediente.Productos.application.error.ProductoNotFoundException;
-import com.frankly221.productoCategoriaIngrediente.Productos.domain.ProductoIngrediente;
+import com.frankly221.productoCategoriaIngrediente.Productos.domain.Producto;
 import com.frankly221.productoCategoriaIngrediente.Productos.domain.ProductoRepository;
 
 @Service
@@ -40,13 +40,13 @@ public class ProductoService {
 
     // Se guarda el producto en la base de datos y se devuelve el productoDTO
     public ProductoDTO save(ProductoDTO productoDTO) {
-        ProductoIngrediente producto = productoMapper.productoDTOToProducto(productoDTO);
+        Producto producto = productoMapper.productoDTOToProducto(productoDTO);
         
 
         producto.setCreadoEn(Instant.now());
         producto.setActualizadoEn(Instant.now());
 
-        ProductoIngrediente productoGuardado = productoRepository.save(producto);
+        Producto productoGuardado = productoRepository.save(producto);
         productoRepository.save(producto);
 
         // Se guarda el producto en la base de datos y se devuelve el productoDTO
@@ -60,7 +60,7 @@ public class ProductoService {
     public ProductoDTO findByIdProductoAndIdrestaurante(int idProducto, int idRestaurante) throws ProductoNotFoundException {
 
 
-        ProductoIngrediente producto = productoRepository.findByIdProductoAndIdrestaurante(idProducto, idRestaurante)
+        Producto producto = productoRepository.findByIdProductoAndIdrestaurante(idProducto, idRestaurante)
         .orElseThrow(() -> new ProductoNotFoundException("El producto no existe en el restaurante"));
 
     return productoMapper.productoToProductoDTO(producto);
@@ -69,7 +69,7 @@ public class ProductoService {
     // Se busca el producto por idProducto y idRestaurante y se devuelve el productoDTO
 
     public ProductoDTO update(ProductoDTO productoDTO) throws ProductoNotFoundException {
-        ProductoIngrediente productoExistente = productoRepository
+        Producto productoExistente = productoRepository
             .findByIdProductoAndIdrestaurante(productoDTO.getIdProducto(), productoDTO.getIdRestaurante())
             .orElseThrow(() -> new ProductoNotFoundException("Producto no encontrado para actualizar"));
     
@@ -77,7 +77,7 @@ public class ProductoService {
         productoMapper.actualizarProductoDesdeDTO(productoDTO, productoExistente);
         productoExistente.setActualizadoEn(Instant.now());
     
-        ProductoIngrediente productoActualizado = productoRepository.update(productoExistente);
+        Producto productoActualizado = productoRepository.update(productoExistente);
     
         return productoMapper.productoToProductoDTO(productoActualizado);
     }
