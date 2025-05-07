@@ -38,5 +38,10 @@ public class Ingrediente {
     @Column(name = "actualizado_en")
     private Instant actualizadoEn;
 
+    public Ingrediente(int idIngrediente, String nombre) {
+        this.idIngrediente = idIngrediente;
+        this.nombre = nombre;
+    }
+
     
 }

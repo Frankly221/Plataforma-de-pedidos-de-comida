@@ -1,7 +1,9 @@
-package com.frankly221.productoCategoriaIngrediente.Productos.domain;
+package com.frankly221.productoCategoriaIngrediente.Productos.domain.Repository;
 
 import java.util.List;
 import java.util.Optional;
+
+import com.frankly221.productoCategoriaIngrediente.Productos.domain.Models.Producto;
 
 public interface ProductoRepository {
     // Un restaurante puede crear un producto (nombre, precio, descripción, etc.).
@@ -23,3 +25,4 @@ public interface ProductoRepository {
     // Un cliente puede ver los productos de una categoria en específico.
     List<Producto> findByIdCategoria(int idCategoria);
 }
+

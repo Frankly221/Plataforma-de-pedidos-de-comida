@@ -1,14 +1,15 @@
-package com.frankly221.productoCategoriaIngrediente.Productos.application;
+package com.frankly221.productoCategoriaIngrediente.Productos.application.Service;
 
 import java.time.Instant;
 import java.util.List;
 
-
 import org.springframework.stereotype.Service;
 
+import com.frankly221.productoCategoriaIngrediente.Productos.application.ProductoDTO;
+import com.frankly221.productoCategoriaIngrediente.Productos.application.ProductoMapper;
 import com.frankly221.productoCategoriaIngrediente.Productos.application.error.ProductoNotFoundException;
-import com.frankly221.productoCategoriaIngrediente.Productos.domain.Producto;
-import com.frankly221.productoCategoriaIngrediente.Productos.domain.ProductoRepository;
+import com.frankly221.productoCategoriaIngrediente.Productos.domain.Models.Producto;
+import com.frankly221.productoCategoriaIngrediente.Productos.domain.Repository.ProductoRepository;
 
 @Service
 

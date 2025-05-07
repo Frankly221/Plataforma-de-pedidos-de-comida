@@ -4,7 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration.AccessLevel;
 import org.springframework.stereotype.Component;
 
-import com.frankly221.productoCategoriaIngrediente.Productos.domain.Producto;
+import com.frankly221.productoCategoriaIngrediente.Productos.domain.Models.Producto;
 
 @Component
 public class ProductoMapper {

@@ -31,12 +31,20 @@ public class ProductoIngrediente {
     @Column(name = "id_ingrediente")
     private int idIngrediente;
 
+    // // private Producto producto;
+    // private Ingrediente ingrediente;
+
     // @Column(name = "creado_en")
     // private Instant creadoEn;
 
     // @Column(name = "actualizado_en")
     // private Instant actualizadoEn;
 
+    // public ProductoIngrediente(Producto producto, Ingrediente ingrediente) {
+        
+    //     this.producto = producto;
+    //     this.ingrediente = ingrediente;
+    // }
 
     
 }

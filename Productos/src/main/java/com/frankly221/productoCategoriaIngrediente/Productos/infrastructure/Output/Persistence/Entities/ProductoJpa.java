@@ -1,4 +1,4 @@
-package com.frankly221.productoCategoriaIngrediente.Productos.domain;
+package com.frankly221.productoCategoriaIngrediente.Productos.infrastructure.Output.Persistence.Entities;
 
 import java.time.Instant;
 
@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @Table(name = "producto")
-public class Producto {
+public class ProductoJpa {
 
 
     @Id
@@ -39,6 +39,11 @@ public class Producto {
 
     @Column(name = "id_categoria")
     private int idCategoria; 
+
+    public ProductoJpa(int idProducto, String descripcion) {
+        this.idProducto = idProducto;
+        this.descripcion = descripcion;
+    }
 
     
 }

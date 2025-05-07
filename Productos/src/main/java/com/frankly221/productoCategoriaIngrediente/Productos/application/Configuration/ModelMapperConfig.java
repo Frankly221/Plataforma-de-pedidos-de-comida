@@ -1,4 +1,4 @@
-package com.frankly221.productoCategoriaIngrediente.Productos.application;
+package com.frankly221.productoCategoriaIngrediente.Productos.application.Configuration;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

@@ -1,21 +1,21 @@
-package com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.infrastructure;
+package com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.infrastructure.Repository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
-import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.application.ProductoIngredienteDTOQuery;
 import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.domain.ProductoIngrediente;
-import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.domain.ProductoQueryRepository;
 import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.domain.RepositoryProductoIngrediente;
+import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.infrastructure.Mapper.MapperQuery;
 
 @Repository
-public class MysqlProductoIngredienteRepository implements RepositoryProductoIngrediente, ProductoQueryRepository {
+public class MysqlProductoIngredienteRepository implements RepositoryProductoIngrediente {
 
     private final JpaProductosIngredientesRepository jpaProductosIngredientesRepository;
-    public MysqlProductoIngredienteRepository(JpaProductosIngredientesRepository jpaProductosIngredientesRepository) {
+    private final MapperQuery mapperQuery;
+    public MysqlProductoIngredienteRepository(JpaProductosIngredientesRepository jpaProductosIngredientesRepository,MapperQuery mapperQuery) {
         this.jpaProductosIngredientesRepository = jpaProductosIngredientesRepository;
+        this.mapperQuery = mapperQuery;
     }
 
 
@@ -42,20 +42,9 @@ public class MysqlProductoIngredienteRepository implements RepositoryProductoIng
 
 
     @Override
-    public List<ProductoIngredienteDTOQuery> obtenerIngredientesPorProducto(int idProducto) {
-        List<Object[]> resultados = jpaProductosIngredientesRepository.findIngredientesByIdProducto(idProducto);
-
-        return resultados.stream()
-                .map(result -> new ProductoIngredienteDTOQuery(
-                        (int) result[0], // idProducto
-                        (String) result[1], // nombreProducto
-                        (int) result[2], // idIngrediente
-                        (String) result[3]  // nombreIngrediente
-                ))
-                .collect(Collectors.toList());
-
+    public List<ProductoIngrediente> buscarIngredientesPorProducto(int idProducto) {
+        return null;
     }
-    
-    
+   
     
 }

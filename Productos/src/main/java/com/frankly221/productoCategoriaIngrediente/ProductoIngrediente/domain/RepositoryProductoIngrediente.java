@@ -4,6 +4,9 @@ import java.util.List;
 
 public interface RepositoryProductoIngrediente {
 
+        //Busca por un producto y devuelve todos los ingredientes que tiene ese producto
+        List<ProductoIngrediente> buscarIngredientesPorProducto(int idProducto); 
+
     //Guardar en la tabla tantos productos como ingredientes se le pasen
     void save( List<ProductoIngrediente> productoIngrediente );
 

@@ -1,4 +1,4 @@
-package com.frankly221.productoCategoriaIngrediente.Productos.infrastructure;
+package com.frankly221.productoCategoriaIngrediente.Productos.infrastructure.Input.Controllers;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.frankly221.productoCategoriaIngrediente.Productos.application.ProductoDTO;
-import com.frankly221.productoCategoriaIngrediente.Productos.application.ProductoService;
+import com.frankly221.productoCategoriaIngrediente.Productos.application.Service.ProductoService;
 import com.frankly221.productoCategoriaIngrediente.Productos.application.error.ProductoNotFoundException;
 
 @RestController

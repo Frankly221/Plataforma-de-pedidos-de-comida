@@ -1,4 +1,4 @@
-package com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.infrastructure;
+package com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.infrastructure.Repository;
 
 import java.util.List;
 
