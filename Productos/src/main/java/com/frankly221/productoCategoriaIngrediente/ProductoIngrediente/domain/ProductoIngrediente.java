@@ -19,5 +19,8 @@ public class ProductoIngrediente {
 
     private int idIngrediente;
 
+    private String nombreIngrediente;
+
+    private String nombreProducto;
     
 }

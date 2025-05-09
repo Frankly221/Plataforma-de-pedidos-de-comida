@@ -30,6 +30,9 @@ public class ProductoIngredienteJpa {
     @Column(name = "id_ingrediente")
     private int idIngrediente;
 
+    private String nombreIngrediente;
+
+    private String nombreProducto;
  
     
 }
