@@ -1,4 +1,4 @@
-package com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.infrastructure.Repository;
+package com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.infrastructure.Output.Persistence.Repository;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.domain.ProductoIngrediente;
 import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.domain.RepositoryProductoIngrediente;
-import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.infrastructure.Mapper.MapperQuery;
+import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.infrastructure.Output.Mapper.MapperQuery;
 
 @Repository
 public class MysqlProductoIngredienteRepository implements RepositoryProductoIngrediente {

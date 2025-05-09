@@ -1,4 +1,4 @@
-package com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.infrastructure.Mapper;
+package com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.infrastructure.Output.Mapper;
 
 import org.springframework.stereotype.Component;
 
