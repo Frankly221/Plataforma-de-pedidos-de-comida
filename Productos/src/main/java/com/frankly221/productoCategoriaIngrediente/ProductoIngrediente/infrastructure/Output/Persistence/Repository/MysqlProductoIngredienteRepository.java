@@ -6,16 +6,16 @@ import org.springframework.stereotype.Repository;
 
 import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.domain.ProductoIngrediente;
 import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.domain.RepositoryProductoIngrediente;
-import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.infrastructure.Output.Mapper.MapperQuery;
+import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.infrastructure.Output.Persistence.Mapper.MapperProductoIngrediente;
 
 @Repository
 public class MysqlProductoIngredienteRepository implements RepositoryProductoIngrediente {
 
     private final JpaProductosIngredientesRepository jpaProductosIngredientesRepository;
-    private final MapperQuery mapperQuery;
-    public MysqlProductoIngredienteRepository(JpaProductosIngredientesRepository jpaProductosIngredientesRepository,MapperQuery mapperQuery) {
+    private final MapperProductoIngrediente productoIngredienteMapper;
+    public MysqlProductoIngredienteRepository(JpaProductosIngredientesRepository jpaProductosIngredientesRepository,MapperProductoIngrediente productoIngredienteMapper) {
         this.jpaProductosIngredientesRepository = jpaProductosIngredientesRepository;
-        this.mapperQuery = mapperQuery;
+        this.productoIngredienteMapper = productoIngredienteMapper;
     }
 
 

@@ -51,5 +51,11 @@ public class MapperProductoIngrediente {
         return productoIngrediente;
 
     }
+
+    public ProductoIngredienteJpa modelToEntityJpa(ProductoIngrediente productoIngrediente) {
+        ProductoIngredienteJpa entity = modelMapper.map(productoIngrediente, ProductoIngredienteJpa.class);
+
+        return entity;
+    }
     
 }
