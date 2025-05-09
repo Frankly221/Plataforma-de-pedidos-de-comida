@@ -7,12 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.domain.ProductoIngrediente;
+import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.infrastructure.Output.Persistence.Entities.ProductoIngredienteJpa;
 
 
 @Repository
 
-public interface JpaProductosIngredientesRepository extends  JpaRepository<ProductoIngrediente, Integer> {
+public interface JpaProductosIngredientesRepository extends  JpaRepository<ProductoIngredienteJpa, Integer> {
 
     @Query(value = """
            SELECT

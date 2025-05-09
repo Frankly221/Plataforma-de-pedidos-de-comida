@@ -15,41 +15,31 @@ public class MapperProductoIngrediente {
         private final ModelMapper modelMapper;
 
     
-    public  MapperProductoIngrediente(ModelMapper modelMapper) {
+    public MapperProductoIngrediente(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
-         // Configurar para ignorar campos null al mapear
-         this.modelMapper.getConfiguration()
-         .setFieldMatchingEnabled(true)
-         .setFieldAccessLevel(AccessLevel.PRIVATE)
-         .setSkipNullEnabled(true);
-
-        
+        this.modelMapper.getConfiguration()
+            .setFieldMatchingEnabled(true)
+            .setFieldAccessLevel(AccessLevel.PRIVATE)
+            .setSkipNullEnabled(true);
     }
 
-    public static ProductoIngredienteJpa ObjectToEntitieJpa(Object[] object) {
+    public ProductoIngredienteJpa objectToEntitieJpa(Object[] object) {
+        int idProducto = (object[0] instanceof Number) ? ((Number) object[0]).intValue() : 0;
+        String nombreProducto = (String) object[1];
+        int idIngrediente = (object[2] instanceof Number) ? ((Number) object[2]).intValue() : 0;
+        String nombreIngrediente = (String) object[3];
 
-    int idProducto = (object[0] instanceof Number) ? ((Number) object[0]).intValue() : 0;
-    String nombreProducto = (String) object[1];
-    int idIngrediente = (object[2] instanceof Number) ? ((Number) object[2]).intValue() : 0;
-    String nombreIngrediente = (String) object[3];
+        ProductoIngredienteJpa entity = new ProductoIngredienteJpa();
+        entity.setIdProducto(idProducto);
+        entity.setNombreProducto(nombreProducto);
+        entity.setIdIngrediente(idIngrediente);
+        entity.setNombreIngrediente(nombreIngrediente);
 
-    ProductoIngredienteJpa entity = new ProductoIngredienteJpa();
-
-    entity.setIdProducto(idProducto);
-    entity.setNombreProducto(nombreProducto);
-    entity.setIdIngrediente(idIngrediente);
-    entity.setNombreIngrediente(nombreIngrediente);
-
-     return entity;
-
+        return entity;
     }
 
-    public  ProductoIngrediente entityJpaToModel(ProductoIngredienteJpa entity) {
-
-        ProductoIngrediente productoIngrediente = modelMapper.map(entity, ProductoIngrediente.class);
-
-        return productoIngrediente;
-
+    public ProductoIngrediente entityJpaToModel(ProductoIngredienteJpa entity) {
+        return modelMapper.map(entity, ProductoIngrediente.class);
     }
 
     public ProductoIngredienteJpa modelToEntityJpa(ProductoIngrediente productoIngrediente) {

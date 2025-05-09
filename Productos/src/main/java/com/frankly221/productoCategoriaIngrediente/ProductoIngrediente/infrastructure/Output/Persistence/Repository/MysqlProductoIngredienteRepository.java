@@ -6,44 +6,68 @@ import org.springframework.stereotype.Repository;
 
 import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.domain.ProductoIngrediente;
 import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.domain.RepositoryProductoIngrediente;
+import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.infrastructure.Output.Persistence.Entities.ProductoIngredienteJpa;
 import com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.infrastructure.Output.Persistence.Mapper.MapperProductoIngrediente;
 
 @Repository
 public class MysqlProductoIngredienteRepository implements RepositoryProductoIngrediente {
 
     private final JpaProductosIngredientesRepository jpaProductosIngredientesRepository;
-    private final MapperProductoIngrediente productoIngredienteMapper;
-    public MysqlProductoIngredienteRepository(JpaProductosIngredientesRepository jpaProductosIngredientesRepository,MapperProductoIngrediente productoIngredienteMapper) {
+    private final MapperProductoIngrediente mapper;
+    public MysqlProductoIngredienteRepository(JpaProductosIngredientesRepository jpaProductosIngredientesRepository,MapperProductoIngrediente mapper) {
         this.jpaProductosIngredientesRepository = jpaProductosIngredientesRepository;
-        this.productoIngredienteMapper = productoIngredienteMapper;
+        this.mapper = mapper;
     }
 
 
 
     @Override
     public void save(List<ProductoIngrediente> productoIngredientes) {
+
+        List<ProductoIngredienteJpa> productoIngredienteJpa = productoIngredientes.stream()
+                .map(mapper::modelToEntityJpa)
+                .toList();
+
         //guarda todas las filas de la tabla producto_ingrediente que se le pasen
-        jpaProductosIngredientesRepository.saveAll(productoIngredientes);
+        jpaProductosIngredientesRepository.saveAll( productoIngredienteJpa);
     }
 
 
     @Override
-    public ProductoIngrediente update(List<ProductoIngrediente> productoIngrediente, int idProductoIngrediente) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    public void update(List<ProductoIngrediente> productoIngrediente, int idProductoIngrediente) {
+               List<ProductoIngredienteJpa> productoIngredienteJpa = productoIngrediente.stream()
+                .map(mapper::modelToEntityJpa)
+                .toList();
+
+        //guarda todas las filas de la tabla producto_ingrediente que se le pasen
+        jpaProductosIngredientesRepository.saveAll( productoIngredienteJpa);
+
     }
 
     @Override
     public void deleteByIdProductoAndIdrestaurante(ProductoIngrediente productoIngrediente, int idProductoIngrediente) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteByIdProductoAndIdrestaurante'");
+        ProductoIngredienteJpa productoIngredienteJpa = mapper.modelToEntityJpa(productoIngrediente);
+        jpaProductosIngredientesRepository.save(productoIngredienteJpa);
+
     }
 
 
 
     @Override
     public List<ProductoIngrediente> buscarIngredientesPorProducto(int idProducto) {
-        return null;
+        List<Object[]> lista = jpaProductosIngredientesRepository.findIngredientesByIdProducto(idProducto);
+
+        List<ProductoIngredienteJpa> listaJpa = lista.stream()
+                .map(mapper::objectToEntitieJpa)
+                .toList();
+
+        List<ProductoIngrediente> listaModelo = listaJpa.stream()
+                .map(mapper::entityJpaToModel)
+                .toList();
+
+
+
+        return listaModelo;
     }
    
     

@@ -12,7 +12,7 @@ public interface RepositoryProductoIngrediente {
 
 
     //Edita la fila de la tabla segun el idProductoIngrediente que se le pase
-    ProductoIngrediente update( List<ProductoIngrediente> productoIngrediente, int idProductoIngrediente); 
+    void update( List<ProductoIngrediente> productoIngrediente, int idProductoIngrediente); 
 
 
     //Elimina la fila de la tabla segun el idProductoIngrediente que se le pase , solo seria true or false
