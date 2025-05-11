@@ -1,5 +1,7 @@
 package com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.domain;
 
+import java.time.Instant;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,5 +24,9 @@ public class ProductoIngrediente {
     private String nombreIngrediente;
 
     private String nombreProducto;
+
+    private Instant creadoEn;
+
+    private Instant actualizadoEn;
     
 }
