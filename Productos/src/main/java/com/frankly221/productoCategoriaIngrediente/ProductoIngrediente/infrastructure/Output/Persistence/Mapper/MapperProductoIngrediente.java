@@ -24,12 +24,14 @@ public class MapperProductoIngrediente {
     }
 
     public ProductoIngredienteJpa objectToEntitieJpa(Object[] object) {
-        int idProducto = (object[0] instanceof Number) ? ((Number) object[0]).intValue() : 0;
-        String nombreProducto = (String) object[1];
-        int idIngrediente = (object[2] instanceof Number) ? ((Number) object[2]).intValue() : 0;
-        String nombreIngrediente = (String) object[3];
+        int idProductoIngrediente = (object[0] instanceof Number) ? ((Number) object[0]).intValue() : 0;
+        int idProducto = (object[1] instanceof Number) ? ((Number) object[1]).intValue() : 0;
+        String nombreProducto = (String) object[2];
+        int idIngrediente = (object[3] instanceof Number) ? ((Number) object[3]).intValue() : 0;
+        String nombreIngrediente = (String) object[4];
 
         ProductoIngredienteJpa entity = new ProductoIngredienteJpa();
+        entity.setIdProductoIngrediente(idProductoIngrediente);
         entity.setIdProducto(idProducto);
         entity.setNombreProducto(nombreProducto);
         entity.setIdIngrediente(idIngrediente);

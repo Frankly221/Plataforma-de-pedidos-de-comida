@@ -38,10 +38,10 @@ public class MapperSalidaData {
             dto.setNombreProducto(productoIngrediente.get(0).getNombreProducto());
 
                 List<IngredientesDTO> ingredientes = productoIngrediente.stream()
-            .map(pi -> new IngredientesDTO(pi.getIdIngrediente(), pi.getNombreIngrediente()))
+            .map(pi -> new IngredientesDTO(pi.getIdIngrediente(), pi.getNombreIngrediente(), pi.getIdProductoIngrediente()))
             .toList();
         
-             dto.setIngredientes(ingredientes);
+             dto.setIngredientesAndIdProductoIngrediente(ingredientes);
 
         return dto;
     }

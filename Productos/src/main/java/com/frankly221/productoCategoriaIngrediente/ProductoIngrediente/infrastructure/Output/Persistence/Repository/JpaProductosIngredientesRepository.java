@@ -16,6 +16,7 @@ public interface JpaProductosIngredientesRepository extends  JpaRepository<Produ
 
     @Query(value = """
            SELECT
+               pi.id_producto_ingrediente AS id,
                p.id_producto       AS producto_id, 
                p.descripcion       AS producto_nombre,
                i.idingrediente     AS ingrediente_id,

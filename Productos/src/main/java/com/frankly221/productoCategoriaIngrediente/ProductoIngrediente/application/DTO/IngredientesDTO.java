@@ -13,6 +13,7 @@ public class IngredientesDTO {
 
     private int id_ingrediente;
     private String nombre_ingrediente;
+    private int idProductoIngrediente;
 
     
 }

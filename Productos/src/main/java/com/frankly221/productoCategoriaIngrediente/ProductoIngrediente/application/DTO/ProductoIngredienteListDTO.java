@@ -18,6 +18,6 @@ public class ProductoIngredienteListDTO {
     
     private String nombreProducto;
 
-    private List<IngredientesDTO> ingredientes;
+    private List<IngredientesDTO> ingredientesAndIdProductoIngrediente;
   
 }

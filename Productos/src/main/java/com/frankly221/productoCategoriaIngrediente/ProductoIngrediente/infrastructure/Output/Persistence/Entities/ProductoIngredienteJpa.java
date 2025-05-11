@@ -1,7 +1,5 @@
 package com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.infrastructure.Output.Persistence.Entities;
 
-import java.time.Instant;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,10 +34,10 @@ public class ProductoIngredienteJpa {
 
     private String nombreProducto;
 
-    @Column(name = "creado_en")
-    private Instant creadoEn;
-    @Column(name = "actualizado_en")
-    private Instant actualizadoEn;
+    // @Column(name = "creado_en")
+    // private Instant creadoEn;
+    // @Column(name = "actualizado_en")
+    // private Instant actualizadoEn;
  
     
 }
