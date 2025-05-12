@@ -42,9 +42,52 @@ public class ServiceProductoIngrediente {
             pi.setCreadoEn(ahora);
         }
 
-        productoIngredienteRepository.save(productoIngredienteList); //  Correcto: pasa la lista
+        productoIngredienteRepository.save(productoIngredienteList); // Correcto: pasa la lista
     }
 
-    
+    public void update(List<ProductoIngrediente> productoIngredienteList) {
+
+        Instant ahora = Instant.now();
+        for (ProductoIngrediente pi : productoIngredienteList) {
+            ProductoIngrediente piDataCompleta = productoIngredienteRepository
+                    .findByIdProductoIngrediente(pi.getIdProductoIngrediente());
+
+            if (piDataCompleta == null) {
+                throw new RuntimeException(
+                        "No se encontró el producto ingrediente con ID: " + pi.getIdProductoIngrediente());
+            }
+
+            if (pi.getIdProducto() != 0) {
+                piDataCompleta.setIdProducto(pi.getIdProducto());
+            }
+            if (pi.getIdIngrediente() != 0) {
+                piDataCompleta.setIdIngrediente(pi.getIdIngrediente());
+            }
+
+            piDataCompleta.setActualizadoEn(ahora);
+
+            productoIngredienteRepository.updateone(piDataCompleta);
+
+        }
+
+    }
+
+    public void deleteByIdProductoAndIdrestaurante( int idProductoIngrediente) {
+
+        ProductoIngrediente piDataCompleta = productoIngredienteRepository
+                .findByIdProductoIngrediente(idProductoIngrediente);
+
+        if (piDataCompleta == null) {
+            throw new RuntimeException(
+                    "No se encontró el productoIngrediente con ID: " + idProductoIngrediente);
+        }
+
+        piDataCompleta.setSn("n");
+
+        piDataCompleta.setActualizadoEn(Instant.now());
+        productoIngredienteRepository.updateone(piDataCompleta);
+
+        
+    }
 
 }

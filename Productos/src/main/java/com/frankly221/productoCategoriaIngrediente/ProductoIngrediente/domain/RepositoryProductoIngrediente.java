@@ -12,11 +12,16 @@ public interface RepositoryProductoIngrediente {
 
 
     //Edita la fila de la tabla segun el idProductoIngrediente que se le pase
-    void update( List<ProductoIngrediente> productoIngrediente, int idProductoIngrediente); 
+    void update( List<ProductoIngrediente> productoIngrediente);
+    
+    void updateone( ProductoIngrediente productoIngrediente);
 
 
     //Elimina la fila de la tabla segun el idProductoIngrediente que se le pase , solo seria true or false
-    void deleteByIdProductoAndIdrestaurante(ProductoIngrediente productoIngrediente, int idProductoIngrediente);
+    void deleteByIdProductoIngrediente(ProductoIngrediente productoIngrediente, int idProductoIngrediente);
+
+    //Buscar por idProductoIngrediente
+    ProductoIngrediente findByIdProductoIngrediente(int idProductoIngrediente);
 
     
 }

@@ -34,7 +34,7 @@ public class MysqlProductoIngredienteRepository implements RepositoryProductoIng
 
 
     @Override
-    public void update(List<ProductoIngrediente> productoIngrediente, int idProductoIngrediente) {
+    public void update(List<ProductoIngrediente> productoIngrediente) {
                List<ProductoIngredienteJpa> productoIngredienteJpa = productoIngrediente.stream()
                 .map(mapper::modelToEntityJpa)
                 .toList();
@@ -45,7 +45,7 @@ public class MysqlProductoIngredienteRepository implements RepositoryProductoIng
     }
 
     @Override
-    public void deleteByIdProductoAndIdrestaurante(ProductoIngrediente productoIngrediente, int idProductoIngrediente) {
+    public void deleteByIdProductoIngrediente(ProductoIngrediente productoIngrediente, int idProductoIngrediente) {
         ProductoIngredienteJpa productoIngredienteJpa = mapper.modelToEntityJpa(productoIngrediente);
         jpaProductosIngredientesRepository.save(productoIngredienteJpa);
 
@@ -68,6 +68,28 @@ public class MysqlProductoIngredienteRepository implements RepositoryProductoIng
 
 
         return listaModelo;
+    }
+
+
+
+    @Override
+    public ProductoIngrediente findByIdProductoIngrediente(int idProductoIngrediente) {
+        
+        ProductoIngredienteJpa productoIngredienteJpa = jpaProductosIngredientesRepository.findById(idProductoIngrediente).orElse(null);
+        if (productoIngredienteJpa != null) {
+            return mapper.entityJpaToModel(productoIngredienteJpa);
+        } else {
+            return null;
+        }
+    }
+
+
+
+    @Override
+    public void updateone(ProductoIngrediente productoIngrediente) {
+
+        ProductoIngredienteJpa productoIngredienteJpa = mapper.modelToEntityJpa(productoIngrediente);
+        jpaProductosIngredientesRepository.save(productoIngredienteJpa);
     }
    
     
