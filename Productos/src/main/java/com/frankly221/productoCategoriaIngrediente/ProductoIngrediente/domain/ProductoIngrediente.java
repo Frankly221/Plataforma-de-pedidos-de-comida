@@ -28,5 +28,8 @@ public class ProductoIngrediente {
     private Instant creadoEn;
 
     private Instant actualizadoEn;
+
+    //Activo o no -> si - no
+    private String sn;
     
 }

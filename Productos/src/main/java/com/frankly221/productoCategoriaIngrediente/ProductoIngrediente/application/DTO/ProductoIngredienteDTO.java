@@ -28,6 +28,8 @@ public class ProductoIngredienteDTO {
     private Instant creadoEn;
 
     private Instant actualizadoEn;
+
+    private String sn;
   
     
 }

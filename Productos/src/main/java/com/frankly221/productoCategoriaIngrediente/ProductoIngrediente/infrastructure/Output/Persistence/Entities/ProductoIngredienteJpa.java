@@ -1,5 +1,7 @@
 package com.frankly221.productoCategoriaIngrediente.ProductoIngrediente.infrastructure.Output.Persistence.Entities;
 
+import java.time.Instant;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,7 +20,6 @@ import lombok.NoArgsConstructor;
 
 public class ProductoIngredienteJpa {
 
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto_ingrediente")
@@ -34,10 +35,14 @@ public class ProductoIngredienteJpa {
 
     private String nombreProducto;
 
-    // @Column(name = "creado_en")
-    // private Instant creadoEn;
-    // @Column(name = "actualizado_en")
-    // private Instant actualizadoEn;
- 
-    
+    @Column(name = "creado_en")
+    private Instant creadoEn;
+
+    @Column(name = "actualizado_en")
+    private Instant actualizadoEn;
+
+    // Activo o no -> si - no
+    @Column(name = "sn")
+    private String sn;
+
 }

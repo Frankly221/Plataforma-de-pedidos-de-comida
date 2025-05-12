@@ -23,5 +23,6 @@ public class ProductoDTO {
     private Instant creadoEn;
     private Instant actualizadoEn;
     private int idCategoria; 
+    private String sn; // Activo o no -> si - no
     
 }

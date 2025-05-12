@@ -42,7 +42,9 @@ public class ServiceProductoIngrediente {
             pi.setCreadoEn(ahora);
         }
 
-        productoIngredienteRepository.save(productoIngredienteList); // ✅ Correcto: pasa la lista
+        productoIngredienteRepository.save(productoIngredienteList); //  Correcto: pasa la lista
     }
+
+    
 
 }

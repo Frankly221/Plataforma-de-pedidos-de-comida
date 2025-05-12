@@ -29,9 +29,7 @@ public class Producto {
 
     private int idCategoria; 
 
-    public Producto(int idProducto, String descripcion) {
-        this.idProducto = idProducto;
-        this.descripcion = descripcion;
-    }
+
+    private String sn; // Activo o no -> si - no
     
 }

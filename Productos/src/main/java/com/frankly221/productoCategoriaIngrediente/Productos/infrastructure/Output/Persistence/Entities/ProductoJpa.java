@@ -39,11 +39,9 @@ public class ProductoJpa {
 
     @Column(name = "id_categoria")
     private int idCategoria; 
-
-    public ProductoJpa(int idProducto, String descripcion) {
-        this.idProducto = idProducto;
-        this.descripcion = descripcion;
-    }
+    
+    @Column(name = "sn")
+    private String sn; // Activo o no -> si - no
 
     
 }
