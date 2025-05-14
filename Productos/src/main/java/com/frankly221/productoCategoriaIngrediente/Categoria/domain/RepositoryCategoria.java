@@ -4,15 +4,18 @@ import java.util.List;
 
 public interface RepositoryCategoria {
     //Guardar una categoria
-    Categoria save(Categoria categoria);
+    void save(Categoria categoria);
 
     //Modificar una categoria
-    Categoria update(Categoria categoria);
+    void update(Categoria categoria);
 
     //Eliminar una categoria por id
-    void deleteByIdCategoria(int idCategoria);
+    void deleteByIdCategoria(Categoria categoria);
 
     // Obtener todas las categorias
-    List<Categoria> GetAllCategorias(); 
+    List<Categoria> GetAllCategorias();
+
+    // Obtener una categoria por id
+    Categoria getByIdCategoria(int idCategoria);
 
 }

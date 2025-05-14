@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 
 public class IngredientesDTO {
 
-    private int id_ingrediente;
+    private int idIngrediente;
     private String nombre_ingrediente;
     private int idProductoIngrediente;
 

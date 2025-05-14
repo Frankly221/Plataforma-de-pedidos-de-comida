@@ -23,21 +23,21 @@ public class MapperProductoIngrediente {
             .setSkipNullEnabled(true);
     }
 
-    public ProductoIngredienteJpa objectToEntitieJpa(Object[] object) {
+    public ProductoIngrediente objectToModels(Object[] object) {
         int idProductoIngrediente = (object[0] instanceof Number) ? ((Number) object[0]).intValue() : 0;
         int idProducto = (object[1] instanceof Number) ? ((Number) object[1]).intValue() : 0;
         String nombreProducto = (String) object[2];
         int idIngrediente = (object[3] instanceof Number) ? ((Number) object[3]).intValue() : 0;
         String nombreIngrediente = (String) object[4];
 
-        ProductoIngredienteJpa entity = new ProductoIngredienteJpa();
-        entity.setIdProductoIngrediente(idProductoIngrediente);
-        entity.setIdProducto(idProducto);
-        entity.setNombreProducto(nombreProducto);
-        entity.setIdIngrediente(idIngrediente);
-        entity.setNombreIngrediente(nombreIngrediente);
+        ProductoIngrediente model = new ProductoIngrediente();
+        model.setIdProductoIngrediente(idProductoIngrediente);
+        model.setIdProducto(idProducto);
+        model.setNombreProducto(nombreProducto);
+        model.setIdIngrediente(idIngrediente);
+        model.setNombreIngrediente(nombreIngrediente);
 
-        return entity;
+        return model;
     }
 
     public ProductoIngrediente entityJpaToModel(ProductoIngredienteJpa entity) {

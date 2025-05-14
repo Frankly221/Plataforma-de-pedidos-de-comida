@@ -57,17 +57,13 @@ public class MysqlProductoIngredienteRepository implements RepositoryProductoIng
     public List<ProductoIngrediente> buscarIngredientesPorProducto(int idProducto) {
         List<Object[]> lista = jpaProductosIngredientesRepository.findIngredientesByIdProducto(idProducto);
 
-        List<ProductoIngredienteJpa> listaJpa = lista.stream()
-                .map(mapper::objectToEntitieJpa)
-                .toList();
-
-        List<ProductoIngrediente> listaModelo = listaJpa.stream()
-                .map(mapper::entityJpaToModel)
+        List<ProductoIngrediente> models = lista.stream()
+                .map(mapper::objectToModels)
                 .toList();
 
 
 
-        return listaModelo;
+        return models;
     }
 
 

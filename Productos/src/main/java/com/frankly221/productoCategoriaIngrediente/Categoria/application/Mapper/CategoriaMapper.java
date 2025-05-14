@@ -1,8 +1,9 @@
-package com.frankly221.productoCategoriaIngrediente.Categoria.application;
+package com.frankly221.productoCategoriaIngrediente.Categoria.application.Mapper;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
+import com.frankly221.productoCategoriaIngrediente.Categoria.application.DTO.CategoriaDTO;
 import com.frankly221.productoCategoriaIngrediente.Categoria.domain.Categoria;
 
 @Component

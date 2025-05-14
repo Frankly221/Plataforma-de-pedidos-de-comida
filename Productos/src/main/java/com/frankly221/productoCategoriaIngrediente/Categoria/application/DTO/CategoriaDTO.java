@@ -1,4 +1,4 @@
-package com.frankly221.productoCategoriaIngrediente.Categoria.application;
+package com.frankly221.productoCategoriaIngrediente.Categoria.application.DTO;
 
 import java.time.Instant;
 
@@ -21,6 +21,8 @@ public class CategoriaDTO {
     private Instant creadoEn;
     
     private Instant actualizadoEn;
+    
+    private String sn;
 
     
 }
