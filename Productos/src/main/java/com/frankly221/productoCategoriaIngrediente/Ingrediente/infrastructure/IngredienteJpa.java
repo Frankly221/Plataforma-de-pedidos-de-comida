@@ -1,4 +1,4 @@
-package com.frankly221.productoCategoriaIngrediente.Ingrediente.domain;
+package com.frankly221.productoCategoriaIngrediente.Ingrediente.infrastructure;
 
 import java.time.Instant;
 
@@ -7,20 +7,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
+@AllArgsConstructor
+@Entity
+@Table(name = "ingredientes")
+@NoArgsConstructor
 
-public class Ingrediente {
+public class IngredienteJpa {
 
-    
+        
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_ingrediente")
@@ -38,5 +38,7 @@ public class Ingrediente {
     @Column(name = "actualizado_en")
     private Instant actualizadoEn;
 
+    @Column(name = "sn")
+    private String sn;
     
 }
