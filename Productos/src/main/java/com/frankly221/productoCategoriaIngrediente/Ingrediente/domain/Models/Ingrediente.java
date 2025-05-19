@@ -1,4 +1,4 @@
-package com.frankly221.productoCategoriaIngrediente.Ingrediente.domain;
+package com.frankly221.productoCategoriaIngrediente.Ingrediente.domain.Models;
 
 import java.time.Instant;
 
