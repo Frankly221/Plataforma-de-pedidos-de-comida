@@ -1,4 +1,4 @@
-package com.frankly221.productoCategoriaIngrediente.Ingrediente.infrastructure;
+package com.frankly221.productoCategoriaIngrediente.Ingrediente.infrastructure.output.Persistence.Entities;
 
 import java.time.Instant;
 
